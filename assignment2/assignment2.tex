@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\author{Gui Wenxuan, 2016302580142}
+\title{Assignment 2}
+\begin{document}
+   \maketitle
+   ~\\
+   Q1: telnet whu.edu.cn 25\\
+   A1: \begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.4]{telnet.jpg}
+	\caption{default}
+	\label{ping}
+	\end{figure}
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{result.jpg}
+	\caption{default}
+	\label{ping}
+	\end{figure}
+	\\
+  
+\newpage
+\section{Problem1} True or false?\\
+a. A user requests a Web page that consists of some text and three images. For this page, the client will send one request message and receive four response messages.\\
+b. Two distinct Web pages (for example, www.mit.edu/research .html and www.mit.edu/students.html) can be sent over the same persistent connection.\\
+c. With non-persistent connections between browser and origin server, it is possible for a single TCP segment to carry two distinct HTTP request messages.\\
+d. The Date: header in the HTTP response message indicates when the object in the response was last modified.\\
+e. HTTP response messages never have an empty message body.\\
+
+
+\noindent Solution:\\
+a. F. The client will only send {\bfseries one} messages. \\
+b. T.\\
+c. F. For non-persistent connections, each request/response pair be sent over {\bfseries a separate} TCP connection.\\
+d. F. The \emph Date: header line indicates the time and date when the HTTP response was created and sent by the server.\\
+e. F. Obviously it can be empty.\\
+
+\newpage
+\section{Problem 3} Assume you open a browser and enter http://yourbusiness.com/ about.html in the address bar. What happens until the webpage is dis- played? Provide details about the protocol(s) used and a high-level description of the messages exchanged.\\
+
+\noindent Solution:\\
+\begin{itemize}
+\item Application layer protocols: DNS and HTTP
+\item Transport layer protocols: UDP for DNS; TCP for HTTP
+\end{itemize}
+
+\newpage
+\section{Problem 4} Consider the following string of ASCII characters that were captured by Wireshark when the browser sent an HTTP GET message (i.e., this is the actual content of an HTTP GET message). The characters <cr><lf> are carriage return and line-feed characters (that is, the italized character string <cr> in the text below represents the single carriage-return character that was contained at that point in the HTTP header). Answer the following questions, indicating where in the HTTP GET message below you find the answer.\\
+\emph{GET /cs453/index.html HTTP/1.1 \textless cr\textgreater \textless lf\textgreater Host: gai a.cs.umass.edu \textless cr\textgreater  \textless lf\textgreater User-Agent: Mozilla/5.0 ( Windows;U; Windows NT 5.1; en-US; rv:1.7.2) Gec ko/20040804 Netscape/7.2 (ax)  \textless cr\textgreater  \textless lf\textgreater Accept:ex t/xml, application/xml, application/xhtml+xml, text /html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5 \textless cr\textgreater  \textless lf\textgreater Accept-Language: en-us,en;q=0.5 \textless cr\textgreater  \textless lf\textgreater Accept- Encoding: zip,deflate \textless cr\textgreater  \textless lf\textgreater Accept-Charset: ISO -8859-1,utf-8;q=0.7,*;q=0.7 \textless cr\textgreater  \textless lf\textgreater Keep-Alive: 300 \textless cr\textgreater   \textless lf\textgreater Connection:keep-alive \textless cr\textgreater  \textless lf\textgreater  \textless cr\textgreater  \textless lf\textgreater }\\
+a. What is the URL of the document requested by the browser?\\
+b. What version of HTTP is the browser running?\\
+c. Does the browser request a non-persistent or a persistent connection?\\
+d. What is the IP address of the host on which the browser is running?\\
+e. What type of browser initiates this message? Why is the browser type needed in an HTTP request message?\\
+
+\noindent Solution:\\
+a. The doc request was \emph{https://gaia.cs.umass.edu/cs453/index.html} \\
+b. HTTP version 1.1\\
+c. For Connection: keep-alive, it is a persistent connection.\\
+d. No enough info provided for deciding the IP address.\\
+e. Mozilla/5.0. The browser type information is needed by the server to send different versions of the same object to different types of browsers.\\
+
+\newpage
+\section{Problem 5} The text below shows the reply sent from the server in response to the HTTP GET message in the question above. Answer the following questions, indicat- ing where in the message below you find the answer.\\
+\emph{HTTP/1.1 200 OK \textless cr\textgreater  \textless lf\textgreater Date: Tue, 07 Mar 2008 12:39:45GMT \textless cr\textgreater  \textless lf\textgreater Server: Apache/2.0.52 (Fedora)  \textless cr\textgreater  \textless lf\textgreater Last-Modified: Sat, 10 Dec2005 18:27:46 GMT \textless cr\textgreater  \textless lf\textgreater ETag: ”526c3-f22-a88a4c80” \textless cr\textgreater  \textless lf\textgreater Accept- Ranges: bytes \textless cr\textgreater  \textless lf\textgreater Content-Length: 3874 \textless cr\textgreater  \textless lf\textgreater  Keep-Alive: timeout=max=100 \textless cr\textgreater  \textless lf\textgreater Connection: Keep-Alive \textless cr\textgreater  \textless lf\textgreater Content-Type: text/html; charset= ISO-8859-1 \textless cr\textgreater  \textless lf\textgreater  \textless cr\textgreater  \textless lf\textgreater  \textless !doctype html public ”- //w3c//dtd html 4.0transitional//en”\textgreater  \textless lf\textgreater  \textless html\textgreater  \textless lf\textgreater   \textless head\textgreater  \textless lf\textgreater   \textless meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1”\textgreater  \textless lf\textgreater   \textless meta name=”GENERATOR” content=”Mozilla/4.79 [en] (Windows NT 5.0; U) Netscape]”\textgreater  \textless lf\textgreater   \textless title\textgreater CMPSCI 453 / 591 / NTU-ST550ASpring 2005 homepage \textless /title\textgreater  \textless lf\textgreater  \textless /head\textgreater  \textless lf\textgreater   \textless much more document text following here (not shown)\textgreater }\\
+a. Was the server able to successfully find the document or not? What time was the document reply provided?\\
+b. When was the document last modified?\\
+c. How many bytes are there in the document being returned?\\
+d. What are the first 5 bytes of the document being returned? Did the server agree to a persistent connection?\\
+
+\noindent Solution:\\
+a. Yes, the status code is 200. The reply was on Tuesday, 07 Mar 2008 12:39:45GMT\\
+b. On Saturday 10 Dec 2005 18:27:46GMT\\
+c. 3874 bytes\\
+d. \textless !doc. Yes, the connection is keep-alive.\\
+
+\newpage
+\section{Problem 13} Describe a few scenarios in which mail access protocols are not needed.\\
+
+\noindent Solution:\\
+When the mail message is not a SMTP message.
+
+
+\end{document}
