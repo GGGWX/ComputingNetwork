@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\author{Gui Wenxuan, 2016302580142}
+\title{Assignment 3}
+\begin{document}
+   \maketitle
+  
+\newpage
+\section{Problem1} Suppose Client A requests a web page from Server S through HTTP and its socket is associated with port 33000.\\
+a. What are the source and destination ports for the segments sent from A to S?\\ 
+b. What are the source and destination ports for the segments sent from S to A? \\
+c. Can Client A contact to Server S using UDP as the transport protocol?\\
+d. Can Client A request multiple resources in a single TCP connection?\\
+
+
+
+\noindent Solution:\\
+a. From A to S: \emph{source port: 33000, dest port: 80}\\
+b. From S to A: \emph{source port: 80, dest port: 33000}\\
+c. Yes. It has a small header size\\
+d. No. So-called "multi-casting" is not allowed in TCP.
+
+
+\newpage
+\section{Problem 2} Consider Figure 3.5. What are the source and destination port values in the segments flowing from the server back to the clients’ processes? What are the IP addresses in the network-layer datagrams carrying the transport-layer segments?\\ 
+
+\noindent Solution:\\
+We suppose Client A, C and Server B has their IP address a, b and c respectively.\\
+Client A: \emph{source port: 80, dest port: 26145, source IP address: b, dest IP address: a}\\
+Client C: \emph{source port: 80(both), dest port: 7532(left) 26145(right), source IP address: b(both), dest IP address: c(both)}
+
+
+\newpage
+\section{Problem 3} UDP and TCP use 1s complement for their checksums. Suppose you have the following three 8-bit bytes: 01010011, 01100110, 01110100. What is the 1s complement of the sum of these 8-bit bytes? (Note that although UDP and TCP use 16-bit words in computing the checksum, for this problem you are being asked to consider 8-bit sums.) Show all work. Why is it that UDP takes the 1s complement of the sum; that is, why not just use the sum? With the 1s complement scheme, how does the receiver detect errors? Is it possible that a 1-bit error will go undetected? How about a 2-bit error?\\
+
+
+
+\noindent Solution:\\
+\begin{enumerate} 
+\item
+01010011+01100110=10111001\\
+10111001+01110100=00101101 which one's complement is 11010010\\
+01010011+01100110+10111001+11010010=11111111\\
+
+
+\item Why is that UDP takes the 1s complement of the sum, why not just use the sum?\\
+
+\emph{The reason is that there is no guarantee that all the links between source and destination provide error checking; that is, one of the links may use a link-layer protocol that does not provide error checking. Furthermore, even if segments are correctly transferred across a link, it’s possible that bit errors could be introduced when a segment is stored in a router’s memory. }
+\item With the 1s complement scheme, how does the receiver detect errors? Is it possible that a 1-bit error will go undetected? How about a 2-bit error?\\
+
+\emph{If the sum contains a zero, then it means that there has an error. All 1-bit error will be detected but none 2-bit error will be detected.}
+\end{enumerate}
+
+
+
+\newpage
+\section{Problem 15} Consider the cross-country example shown in Figure 3.17. How big would the window size have to be for the channel utilization to be greater than 98 percent? Suppose that the size of a packet is 1,500 bytes, including both header fields and data.\\
+ 
+
+\noindent Solution:\\
+
+$ \frac{1500 bytes \times 8}{1 Gbps} = 12 \times 10^-6 s = 12 ms $ \\
+
+Suppose window size = n \\
+
+Then $ U_{sender} > 0.98 = \frac{12ms \times n}{30s + 12ms} $ \\
+
+n \textgreater 2450.98 That is to say, n = 2451
+
+
+\newpage
+\section{Problem 40} Consider Figure 3.58. Assuming TCP Reno is the protocol experiencing the behavior shown above, answer the following questions. In all cases, you should provide a short discussion justifying your answer.\\
+a. Identify the intervals of time when TCP slow start is operating.\\
+b. Identify the intervals of time when TCP congestion avoidance is operating.\\
+c. After the 16th transmission round, is segment loss detected by a triple duplicate ACK or by a timeout?\\
+d. After the 22nd transmission round, is segment loss detected by a triple duplicate ACK or by a timeout? \\
+e. What is the initial value of \emph{ssthresh} at the first transmission round?\\
+f. What is the value of \emph{ssthresh} at the 18th transmission round?\\
+g. What is the value of \emph{ssthresh} at the 24th transmission round?\\
+h. During what transmission round is the 70th segment sent?\\
+i. Assuming a packet loss is detected after the 26th round by the receipt of a triple duplicate ACK, what will be the values of the congestion window size and of \emph{ssthresh}?\\
+j. Suppose TCP Tahoe is used (instead of TCP Reno), and assume that triple duplicate ACKs are received at the 16th round. What are the \emph{ssthresh} and the congestion window size at the 19th round?\\
+k. Again suppose TCP Tahoe is used, and there is a timeout event at 22nd round. How many packets have been sent out from 17th round till 22nd round, inclusive?
+\noindent Solution:\\
+\begin{enumerate}
+\item $\left[1, 6\right]$ and [23, 26]
+\item $\left[6, 16\right]$ and [17, 22]
+\item triple duplicate ACK, because the window size is decreased by a half.
+\item timeout, because the window size is set to 1.
+\item It's around 32 or 33, because the slow start stops at that point.
+\item $\frac{42}{2} = 21$
+\item $\frac{28}{2} = 14$
+\item \emph{$1^{st}$}: packet 1; \emph{$2^{nd}$}: packet 2-3; \emph{$3^{rd}$} packet 4-7; \emph{$4^{th}$}: packet 8-15; \emph{$5^{th}$}: packet 16-31; \emph{$6^{th}$}: packet 32-63; 7th: packet 64-96. So during the \emph{$7^{th}$} transmission round is the \emph{$70^{th}$} segment sent.
+\item $\emph{ssthresh} = \frac{8}{2} = 4$ ; $window size = 8 \times MSS$
+\item $\emph{ssthresh} = \frac{42}{2} = 21$; $window size = 1 \times 2 \times 2 = 4$
+\item $1 + 2 + 4 + 8 + 16 + 32 = 63$
+
+\end{enumerate}
+
+
+
+\end{document}
