@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\author{Gui Wenxuan, 2016302580142}
+\title{Assignment 4}
+\begin{document}
+   \maketitle
+  
+\newpage
+\section{Problem1} Consider the network below.\\
+a. Show the forwarding table in router A, such that all traffic destined to host H3 is forwarded through interface 3.\\
+b. Can you write down a forwarding table in router A, such that all traffic from H1 destined to host H3 is forwarded through interface 3, while all traffic from H2 destined to host H3 is forwarded through interface 4? (Hint: This is a trick question.)\\
+
+
+\noindent Solution:\\
+\begin{enumerate}
+\item
+\begin{table}[htbp]  \centering  \begin{tabular}{@{} cc @{}}    \hline    {\bfseries Destination Address} & {\bfseries Link Interface} \\     \hline    H3 & 3 \\     \hline    \hline  \end{tabular}  \caption{Solution a}  \label{tab:label}\end{table}
+
+See the table above.\\
+
+\item No, because forwarding rules are based on destination address.
+\end{enumerate}
+
+
+\newpage
+\section{Problem 2} Suppose two packets arrive to two different input ports of a router at exactly the same time. Also suppose there are no other packets anywhere in the router.\\ 
+a. Suppose the two packets are to be forwarded to two different output ports. Is it possible to forward the two packets through the switch fabric at the same time when the fabric uses a shared bus?\\
+b. Suppose the two packets are to be forwarded to two different output ports. Is it possible to forward the two packets through the switch fabric at the same time when the fabric uses switching via memory?\\
+c. Suppose the two packets are to be forwarded to the same output port. Is it possible to forward the two packets through the switch fabric at the same time when the fabric uses a crossbar?\\
+
+\noindent Solution:\\
+
+\begin{enumerate}
+\item No, you can only transmit one packet once using a shared bus.\\
+\item No, only one memory read/write can be done once via memory.\\
+\item No, it's not possible to send two packets via the same output bus at the same time when using a crossbar.\\
+\end{enumerate}
+
+
+\newpage
+\section{Problem 3} In Section 4.2, we noted that the maximum queuing delay is (n–1)D if the switching fabric is n times faster than the input line rates. Suppose that all packets are of the same length, n packets arrive at the same time to the n input ports, and all n packets want to be forwarded to different output ports. What is the maximum delay for a packet for the (a) memory, (b) bus, and (c) crossbar switching fabrics?\\
+
+
+
+\noindent Solution:\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{switching.png}
+\caption{default}
+\label{default}
+\end{center}
+\end{figure}
+\\
+According to the graph above:
+(a) $(n-1)\times D$ (b) $(n-1)\times D$ (c) 0\\
+
+
+\newpage
+\section{Problem 5} Consider a datagram network using 32-bit host addresses. Suppose a router has four links, numbered 0 through 3, and packets are to be forwarded to the link interfaces as follows:\\
+\begin{center}  \begin{tabular}{@{} cc @{}}    \hline    {\bfseries Destination Address Range} & {\bfseries Link Interface} \\     \hline    11100000 00000000 00000000 00000000\\through\\11100000 00000000 11111111 11111111 & 0 \\     11100000 00000001 00000000 00000000\\through\\11100000 00000001 11111111 11111111 & 1 \\     11100000 00000010 00000000 00000000\\through\\11100001 11111111 11111111 11111111 & 2 \\     otherwise & 3 \\     \hline  \end{tabular}\end{center}
+ a. Provide a forwarding table that has five entries, uses longest prefix match- ing, and forwards packets to the correct link interfaces.\\
+b. Describe how your forwarding table determines the appropriate link inter- face for datagrams with destination addresses:\\
+11111000 10010001 01010001 01010101\\ 11100000 00000000 11000011 00111100\\ 11100001 10000000 00010001 01110111\\
+
+\noindent Solution: \\
+
+\begin{enumerate} 
+\item
+\begin{table}[htbp]  \centering  \begin{tabular}{@{} cc @{}}    \hline    {\bfseries Prefix Match} & {\bfseries Link Interface} \\     \hline    11100000 00000000 & 0 \\     11100000 00000001 & 1 \\     1110000 & 2 \\     otherwise & 3 \\     \hline    \hline  \end{tabular}  \caption{Solution a}  \label{tab:label}\end{table}
+
+See the table above.\\
+
+\item
+first matches for the $4^{th}$ entry: link interface 3\\
+second matches for the $0^{th}$ entry: link interface 0\\
+third matches for the $2^{nd}$ entry: link interface 2\\
+
+\end{enumerate}
+
+
+
+\newpage
+\section{Problem 11} Consider a subnet with prefix 192.168.56.128/26. Give an example of one IP address (of form xxx.xxx.xxx.xxx) that can be assigned to this network. Suppose an ISP owns the block of addresses of the form 192.168.56.32/26. Suppose it wants to create four subnets from this block, with each block having the same number of IP addresses. What are the prefixes (of form a.b.c.d/x) for the four subnets?\\
+ 
+
+\noindent Solution:\\
+mask: 11111111 11111111 11111111 11000000
+so the prefixes of these four subnets are: \emph{192.168.56.192/28; 192.168.56.208/28; 192.168.56.224/28; 192.168.56.240/28}
+
+
+
+\end{document}
