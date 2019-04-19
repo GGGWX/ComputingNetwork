@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\author{Gui Wenxuan, 2016302580142}
+\title{Assignment 5}
+\begin{document}
+   \maketitle
+  
+\newpage
+\section{Problem1 and 2} Looking at Figure 5.3, enumerate the paths from y to u that do not contain any loops\\
+And repeat Problem P1 for paths from x to z, z to u, and z to w.\\
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{Figure5_3.png}
+\caption{Figure 5.3}
+\label{Figure 5.3}
+\end{center}
+\end{figure}
+
+
+
+\noindent Solution:\\
+\begin{enumerate}
+\item \emph{y to u} \\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.1]{y2u.jpg}
+\caption{y to u}
+\label{default}
+\end{center}
+\end{figure}
+\item \emph{x to z} \\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.1]{x2z.jpg}
+\caption{x to z}
+\label{default}
+\end{center}
+\end{figure}
+\item \emph{z to u} \\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.1]{z2u.jpg}
+\caption{z to u}
+\label{default}
+\end{center}
+\end{figure}
+\item \emph{z to w} \\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.1]{z2w.jpg}
+\caption{z to w}
+\label{default}
+\end{center}
+\end{figure}
+\end{enumerate}
+
+\newpage
+\section{Problem 3} Consider the following network. With the indicated link costs, use Dijkstra’s shortest-path algorithm to compute the shortest path from x to all network nodes. Show how the algorithm works by computing a table similar to Table 5.1.\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{Problem3.png}
+\caption{Problem3}
+\label{default}
+\end{center}
+\end{figure}
+
+\noindent Solution:
+\begin{center}  \begin{tabular}{@{} cccccccc @{}}    \hline    step & N' & D(v),p(v) & D(w),p(w) & D(y),p(y) & D(z),p(z) & D(t),p(t) & D(u),p(u) \\     \hline    0 & x & 3,x & 6,x & 6,x & 8,x & max & max \\     1 & xv &  & 6,x & 6,x & 8,x & 7,v & 6,v \\     2 & xvu &  & 6,x & 6,x & 8,x & 7,v &  \\     3 & xvuw &  &  & 6,x & 8,x & 7,v &  \\     4 & xvuwy &  &  &  & 8,x & 7,v &  \\     5 & xvuwyt &  &  &  & 8,x &  &  \\     6 & xvuwytz &  &  &  &  &  &  \\     \hline  \end{tabular}\end{center}
+
+\newpage
+\section{Problem 5} Consider the network shown below, and assume that each node initially knows the costs to each of its neighbors. Consider the distance-vector algo- rithm and show the distance table entries at node z.\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{Problem5.png}
+\caption{Problem5}
+\label{default}
+\end{center}
+\end{figure}
+
+\noindent Solution:\\
+\begin{table}[htbp]  \centering  \begin{tabular}{@{} ccc @{}}    \hline    destination & hit & cost \\     \hline    x &   & 2 \\     y & x & 5 \\     u & x-v & 6 \\     v & x & 5 \\     \hline  \end{tabular}  \caption{TableCaption}  \label{tab:label}\end{table}
+
+
+\newpage
+\section{Problem 12} What is the message complexity of LS routing algorithm? \\
+
+\noindent Solution: We have seen that LS requires each node to know the cost of each link in the network. This requires O(\big|N\big| \big|E\big|) messages to be sent. Also, whenever a link cost changes, the new link cost must be sent to all nodes. With n nodes, with an average of l links/node, each node sends O($n$l). Total messages O($n^2$l)\\
+
+
+
+
+
+\newpage
+\section{Problem 14} Consider the network shown below. Suppose AS3 and AS2 are running OSPF for their intra-AS routing protocol. Suppose AS1 and AS4 are running RIP for their intra-AS routing protocol. Suppose eBGP and iBGP are used for the inter-AS routing protocol. Initially suppose there is no physical link between AS2 and AS4.\\
+a. Router 3c learns about prefix x from which routing protocol: OSPF, RIP, eBGP, or iBGP?\\b. Router 3a learns about x from which routing protocol?\\
+c. Router 1c learns about x from which routing protocol?\\
+d. Router 1d learns about x from which routing protocol?\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{Problem14.png}
+\caption{Problem14}
+\label{default}
+\end{center}
+\end{figure}
+ 
+
+\noindent Solution:\\
+\begin{enumerate}
+\item eBGP because 3c spans two ASs
+\item iBGP because 3a learns about x from 3c, they are in the same AS.
+\item eBGP
+\item iBGP because 1a and 1b are in the same AS and 1d is between them
+\end{enumerate}
+
+
+
+
+\end{document}
