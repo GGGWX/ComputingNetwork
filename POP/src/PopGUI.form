@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="PopGUI">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="700" height="400"/>
+    </constraints>
+    <properties>
+      <minimumSize width="700" height="400"/>
+      <preferredSize width="700" height="400"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="a3db2" binding="panelTop" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="93da" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="username:"/>
+            </properties>
+          </component>
+          <component id="a02b4" class="javax.swing.JTextArea" binding="txtUsername">
+            <constraints/>
+            <properties>
+              <preferredSize width="160" height="17"/>
+            </properties>
+          </component>
+          <component id="cf52b" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <text value="password:"/>
+            </properties>
+          </component>
+          <component id="9e059" class="javax.swing.JPasswordField" binding="passwordField">
+            <constraints/>
+            <properties>
+              <preferredSize width="120" height="30"/>
+            </properties>
+          </component>
+          <component id="fc8b8" class="javax.swing.JLabel" binding="server">
+            <constraints/>
+            <properties>
+              <preferredSize width="50" height="16"/>
+              <text value="server:"/>
+            </properties>
+          </component>
+          <component id="48ed" class="javax.swing.JTextArea" binding="txtUrl">
+            <constraints/>
+            <properties>
+              <preferredSize width="120" height="17"/>
+            </properties>
+          </component>
+          <component id="e7da4" class="javax.swing.JButton" binding="btnLogin">
+            <constraints/>
+            <properties>
+              <preferredSize width="70" height="30"/>
+              <text value="Log in"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e1549" binding="panelCenter" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <preferredSize width="518" height="54"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="e540" binding="panelCenterMid" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <preferredSize width="518" height="24"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <scrollpane id="9d875" binding="jsp">
+                <constraints/>
+                <properties>
+                  <preferredSize width="700" height="300"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="10521" class="javax.swing.JTextArea" binding="txtOutput">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+          <grid id="3e394" binding="panelCenterTop" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints border-constraint="North"/>
+            <properties>
+              <preferredSize width="518" height="30"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="80554" class="javax.swing.JButton" binding="statButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Stat"/>
+                </properties>
+              </component>
+              <component id="bac96" class="javax.swing.JButton" binding="listButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="List"/>
+                </properties>
+              </component>
+              <component id="f0291" class="javax.swing.JButton" binding="retrButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Retr"/>
+                </properties>
+              </component>
+              <component id="3986b" class="javax.swing.JButton" binding="uidlButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Uidl"/>
+                </properties>
+              </component>
+              <component id="e5bc6" class="javax.swing.JButton" binding="deleButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Dele"/>
+                </properties>
+              </component>
+              <component id="37217" class="javax.swing.JButton" binding="rsetButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Rset"/>
+                </properties>
+              </component>
+              <component id="87b7a" class="javax.swing.JLabel" binding="lblInput">
+                <constraints/>
+                <properties>
+                  <preferredSize width="40" height="16"/>
+                  <text value="input:"/>
+                </properties>
+              </component>
+              <component id="ca9e6" class="javax.swing.JTextArea" binding="txtInput">
+                <constraints/>
+                <properties>
+                  <foreground color="-7960954"/>
+                  <preferredSize width="50" height="25"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="301f9" binding="panelBottom" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties>
+          <preferredSize width="10" height="30"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="40a7a" class="javax.swing.JButton" binding="quitButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Quit"/>
+            </properties>
+          </component>
+          <component id="5db04" class="javax.swing.JButton" binding="clearButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Clear"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
