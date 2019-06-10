@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.Socket;
 
 public class PopGUI {
     private JPanel mainPanel;
@@ -63,19 +64,16 @@ public class PopGUI {
                     JOptionPane.showMessageDialog(null, "Password cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-
                 try {
                     pop = new POPClient(host, port);
                     txtOutput.append(pop.getAnswer() + "\r\n");
-                } catch (IOException ex) {
+                } catch (Exception ex){
                     JOptionPane.showMessageDialog(null, "Error: " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
                 }
                 try {
                     pop.login(username, password);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error: " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
                 }
             }
         });
@@ -146,7 +144,7 @@ public class PopGUI {
             public void actionPerformed(ActionEvent e) {
                 if (txtInput.getText().isEmpty()) {
                     txtOutput.append("Please input the number of the mail you want to query the id into the blank above" + "\r\n");
-                }else {
+                } else {
                     num = Integer.valueOf(txtInput.getText());
                     pop.sendCommand("UIDL " + num);
                     txtOutput.append(pop.getAnswer() + "\r\n");
